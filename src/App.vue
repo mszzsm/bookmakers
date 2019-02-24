@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Bookmakers msg="Welcome to Your Bookmaker App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Bookmakers from './components/Bookmakers.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    Bookmakers
+  },
+  
 }
 </script>
 
