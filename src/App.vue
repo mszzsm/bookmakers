@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Bookmakers msg="Welcome to Your Bookmaker App"/>
+    <Bookmakers msg="Kupuon 1 "/>
   </div>
 </template>
 
@@ -14,6 +13,11 @@ export default {
   components: {
     Bookmakers
   },
+  data: function(){
+    return {
+        
+    }
+  }
   
 }
 </script>
@@ -24,7 +28,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #899bad;
   margin-top: 60px;
 }
 </style>
