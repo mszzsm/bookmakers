@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Bookmakers msg="Kupuon 1 "/>
+     <Bookmakers msg="Kupuon text " TeamA="Ireland"  TeamB="Italy"/>
+     <Bookmakers msg="Kupuon text " TeamA="Scarlets" TeamB="Cheateas"/>
   </div>
 </template>
 
@@ -27,7 +28,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #899bad;
   margin-top: 60px;
 }

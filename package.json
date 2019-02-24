@@ -1,6 +1,7 @@
 {
   "name": "bookmakers",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "author": "Mykhailo Shtefanitsa <m.sztefanica@gmail.com>",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +10,8 @@
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "vue": "^2.6.6"
+    "vue": "^2.6.7",
+    "vue-cli": "^2.9.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",

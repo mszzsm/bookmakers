@@ -1,42 +1,45 @@
 
 <template>
     <div class="hello">
-        <h1> {{msg}} </h1>
+        <h3> {{msg}} / {{ Bank + ' Zł' }} </h3>
+        <h4>{{TeamA}} - {{TeamB}}</h4>
+        
 
+            <div id="match" >
+                <p> Favorite <input id="A" :value="Match.TeamA[0]" v-model="Favorite" type="radio"><input type="text" v-model="Match.TeamA[0]"><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamA[1]"><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamA[2]"></p>
+                <p> Favorite <input id="B" :value="Match.TeamB[0]" v-model="Favorite" type="radio"><input type="text" v-model="Match.TeamB[0]"><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamB[1]"><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamB[2]"></p>
+            </div>
         <div class="row">
-            <div class="match" v-for="Teams in MatchA">
-                <p>Match A</p>
-                <p> TeamA <input type="checkbox"><input type="text" v-model="TeamA[0]"><input type="number" placeholder="1.0" step="0.01" min="0" max="10" v-model="TeamA[1]"> {{WinA}} </p>
-                <p> TeamB <input type="checkbox"> <input type="text" v-model="TeamB[0]"><input type="number" placeholder="1.0" step="0.01" min="0" max="10" v-model="TeamB[1]"> {{WinB}}</p>
-            </div>
-            <div class="match">
-                <p>Match B</p>
-                <p> Team A <input type="checkbox"><input type="text" v-model="TeamA[0]"><input type="number" placeholder="1.0" step="0.01" min="0" max="10" v-model="TeamA[1]"> {{WinA}} </p>
-                <p> Team B <input type="checkbox"> <input type="text" v-model="TeamB[0]"><input type="number" placeholder="1.0" step="0.01" min="0" max="10" v-model="TeamB[1]"> {{WinB}}</p>
-            </div>
-        <table style="width:100%">
+
+        <table style="width:50%">
             <tr>
-                <th>Match</th>
-                <th>Bank<th>
-                <th>Play<th>
-                <th>F  F</th>
-                <th>F Nf</th> 
-                <th>Nf F</th>
-                <th>Nf Nf</th>
+                <th>Teams</th>
+                <th>Bank</th>
+                <th>Play</th>
+                <th>Can Win</th>
+                <th>Can Win</th>
+              
             </tr>
         <tr>
-            <td>MatchA</td>
-            <td><input type="number" placeholder="10" step="1" min="5" max="30" v-model="Bank"></td>
-            <td></td> 
-            <td></td>
+            <td>{{Match.TeamA[0]}}</td>
+            <td>{{Match.TeamA[2]}}</td>
+            <td>{{PlayA}}</td> 
+            <td>{{WinA}}</td> 
+            <td>{{WinA - Bank}}</td> 
+
+           
         </tr>
         <tr>
-            <td><input type="number" placeholder="10" step="1" min="5" max="30" v-model="Bank"></td>
-            <td></td> 
-            <td></td>
+            <td>{{Match.TeamB[0]}}</td>
+            <td>{{Match.TeamB[2]}}</td>
+            <td>{{PlayB}}</td> 
+            <td>{{WinB}}</td> 
+            <td>{{WinB - Bank}}</td> 
+          
+          
         </tr>
         </table>
-         <h3> {{ Bank }} </h3>
+        
      </div>
         <hr>
     </div>
@@ -48,39 +51,39 @@
 export default {
     name: 'Bookmakers',
     props: {
-        msg: String
+        msg: String,
+        TeamA: String,
+        TeamB: String
     },
     data: function(){
     return {
-        Bank: 0,
-        Play: 0,
         Draw: 0,
-        MatchA: {TeamA: ['',0,0],TeamB: ['',0,0],},
-        MatchB: {TeamA: ['',0,0],TeamB: ['',0,0],},
+        Favorite: '',
+        Match: {TeamA: ['',0,0],TeamB: ['',0,0],},
     }
     },
     computed: {
+
+    PlayA: function () {
+        const x = this.Match.TeamA[2] * 0.88
+        return parseFloat(x.toFixed(2))
+    },
+    PlayB: function () {
+        const x = this.Match.TeamB[2] * 0.88
+        return parseFloat(x.toFixed(2))
+    },
     WinA: function () {
-        const x = this.TeamA[1] * this.Bank
+        const x = this.Match.TeamA[1] * this.PlayA - this.Match.TeamA[2]
         return parseFloat(x.toFixed(2))
     },
     WinB: function () {
-        const x = this.TeamB[1] * this.Bank
+        const x = this.Match.TeamB[1] * this.PlayB - this.Match.TeamB[2]
         return parseFloat(x.toFixed(2))
     },
-    WinC: function () {
-        const x = this.TeamC[1] * this.Bank
-        return parseFloat(x.toFixed(2))
+    Bank: function() {
+        const x = this.Match.TeamB[2] + this.Match.TeamA[2]
+        return x
     },
-    WinD: function () {
-        const x = this.TeamD[1] * this.Bank
-        return parseFloat(x.toFixed(2))
-    },
-
-    Favorite: function () {
-        const x =  this.TeamB[1] * this.Bank
-        return parseFloat(x.toFixed(2))
-    }
   }
 }
 </script>
@@ -94,9 +97,9 @@ export default {
 }
 
 /* Create two equal columns that sits next to each other */
-.match {
-  flex: 50%;
+#match {
+  width: 50%;
   padding: 20px;
-  height: 300px; /* Should be removed. Only for demonstration */
+  height: 100px; /* Should be removed. Only for demonstration */
 }
 </style>
