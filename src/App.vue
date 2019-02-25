@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-     <Bookmakers msg="Kupuon text " TeamA="Ireland"  TeamB="Italy"/>
-     <Bookmakers msg="Kupuon text " TeamA="Scarlets" TeamB="Cheateas"/>
+    <Bookmakers msg="Kupuon text " TeamA="Scotland"  TeamB="Wales"/>
+    <Bookmakers msg="Kupuon text " TeamA="Ireland"   TeamB="France"/>
+    <Bookmakers msg="Kupuon text " TeamA="England"   TeamB="Italy"/>
   </div>
 </template>
 

@@ -2,46 +2,32 @@
 <template>
     <div class="hello">
         <h3> {{msg}} / {{ Bank + ' Zł' }} </h3>
-        <h4>{{TeamA}} - {{TeamB}}</h4>
-        
-
-            <div id="match" >
-                <p> Favorite <input id="A" :value="Match.TeamA[0]" v-model="Favorite" type="radio"><input type="text" v-model="Match.TeamA[0]"><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamA[1]"><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamA[2]"></p>
-                <p> Favorite <input id="B" :value="Match.TeamB[0]" v-model="Favorite" type="radio"><input type="text" v-model="Match.TeamB[0]"><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamB[1]"><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamB[2]"></p>
-            </div>
         <div class="row">
-
         <table style="width:50%">
             <tr>
                 <th>Teams</th>
                 <th>Bank</th>
+                <th>Odd</th>
                 <th>Play</th>
                 <th>Can Win</th>
-                <th>Can Win</th>
-              
             </tr>
-        <tr>
-            <td>{{Match.TeamA[0]}}</td>
-            <td>{{Match.TeamA[2]}}</td>
-            <td>{{PlayA}}</td> 
-            <td>{{WinA}}</td> 
-            <td>{{WinA - Bank}}</td> 
-
-           
-        </tr>
-        <tr>
-            <td>{{Match.TeamB[0]}}</td>
-            <td>{{Match.TeamB[2]}}</td>
-            <td>{{PlayB}}</td> 
-            <td>{{WinB}}</td> 
-            <td>{{WinB - Bank}}</td> 
-          
-          
-        </tr>
+            <tr>
+                <td>{{TeamA}}</td>
+                <td><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamA[2]"></td>
+                <td><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamA[1]"></td>
+                <td>{{PlayA + 'zł'}}</td> 
+                <td>{{WinA + 'zł'}}</td> 
+            </tr>
+            <tr>
+                <td>{{TeamB}}</td>
+                <td><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamB[2]"></td>
+                <td><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamB[1]"></td>
+                <td>{{PlayB + 'zł'}}</td> 
+                <td>{{WinB + 'zł'}}</td> 
+            </tr>
         </table>
-        
      </div>
-        <hr>
+    <hr>
     </div>
 </template>
 
