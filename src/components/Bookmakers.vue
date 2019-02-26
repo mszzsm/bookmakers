@@ -13,22 +13,25 @@
             </tr>
             <tr>
                 <td>{{TeamA}}</td>
-                <td><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamA[2]"></td>
-                <td><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamA[1]"></td>
+                <td><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamA[2]" v-on:input="$emit('BankA', $event.target.value)"></td>
+                <td><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamA[1]" v-on:input="$emit('OddsA', $event.target.value)"></td>
                 <td>{{PlayA + 'zł'}}</td> 
                 <td>{{WinA + 'zł'}}</td> 
+                <input type="text" >
             </tr>
             <tr>
                 <td>{{TeamB}}</td>
-                <td><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamB[2]"></td>
-                <td><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamB[1]"></td>
+                <td><input type="number" step="1" min="0" max="30" v-model.number="Match.TeamB[2]" v-on:input="$emit('BankB', $event.target.value)"></td>
+                <td><input type="number" placeholder="1.0" step="0.01" min="1" max="40" v-model.number="Match.TeamB[1]" v-on:input="$emit('OddsB', $event.target.value)"></td>
                 <td>{{PlayB + 'zł'}}</td> 
                 <td>{{WinB + 'zł'}}</td> 
             </tr>
         </table>
+       
      </div>
     <hr>
     </div>
+    
 </template>
 
 
@@ -70,6 +73,9 @@ export default {
         const x = this.Match.TeamB[2] + this.Match.TeamA[2]
         return x
     },
+    method: {
+
+    }
   }
 }
 </script>
